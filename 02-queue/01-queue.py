@@ -1,5 +1,3 @@
-
-
 from queue import Queue
 
 # Initializing a queue
