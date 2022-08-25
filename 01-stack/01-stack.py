@@ -15,7 +15,7 @@ print(stack)
 # pop() function to pop
 print('\nElements popped from stack:')
 
-while (True):
+while True:
     try:
         print(stack.pop())
     except IndexError:

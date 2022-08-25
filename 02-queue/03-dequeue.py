@@ -5,12 +5,10 @@ class Dequeue:
       if not not k:
          self.queue = [None] * k
          self.len = 0
+         self.k = k
 
       else:
          self.queue = []
-
-      self.k = k
-      self.front = 0
 
       for _ in range(self.k):
          self.dequeue()
