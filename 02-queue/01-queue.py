@@ -19,3 +19,5 @@ print("\nEmpty: ", q.empty())
 q.put(1)
 print("\nEmpty: ", q.empty())
 print("Full: ", q.full())
+
+
