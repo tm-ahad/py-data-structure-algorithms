@@ -10,6 +10,7 @@ class LinkedList:
    def __init__(self, value, next) -> None:
       self.value = value
       self.next = Node(next)
+      self.tail = self
 
    def getByIndex(self, index) -> any:
       val = self
@@ -46,9 +47,15 @@ class LinkedList:
          if (self.getByIndex(i) == item):
             return i
 
+   def insert(self, item):
+      self.tail.next = Node(item)
+      self.tail = self.tail.next
+
 
 myLinkedList = LinkedList(3, 4)
-myLinkedList.next.next = Node(5)
+myLinkedList.insert(5)
+myLinkedList.insert(6)
+myLinkedList.insert(7)
 
 myLinkedList.view()
 print(myLinkedList.getIndex(5))
