@@ -12,7 +12,7 @@ class LinkedList:
       self.next = Node(next)
       self.tail = self
 
-   def getByIndex(self, index) -> any:
+   def getNodeByIndex(self, index) -> any:
       val = self
       i = index
 
@@ -23,7 +23,7 @@ class LinkedList:
          else:
             break
 
-      return val.value
+      return val
 
    def size(self) -> int:
       size: int = 1
@@ -38,13 +38,13 @@ class LinkedList:
    def view(self) -> None:
       ret = ""
       for i in range(self.size()):
-         ret = f"{ret}{self.getByIndex(i)} -> "
+         ret = f"{ret}{self.getNodeByIndex(i).value} -> "
       ret = f"{ret} None"
       print(ret)
 
    def getIndex(self, item) -> None:
       for i in range(self.size()):
-         if (self.getByIndex(i) == item):
+         if (self.getNodeByIndex(i) == item):
             return i
 
    def insert(self, item):
@@ -52,10 +52,12 @@ class LinkedList:
       self.tail = self.tail.next
 
 
+
 myLinkedList = LinkedList(3, 4)
 myLinkedList.insert(5)
 myLinkedList.insert(6)
 myLinkedList.insert(7)
+
 
 myLinkedList.view()
 print(myLinkedList.getIndex(5))
