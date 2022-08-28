@@ -11,7 +11,8 @@ class LinkedList:
     def __init__(self, value, next) -> None:
         self.value = value
         self.next = Node(next)
-        self.tail = self
+        self.tail = self.getNodeByIndex(self.size() - 1)
+        self.tail.next = self
 
     def getNodeByIndex(self, index) -> any:
         val = self
@@ -27,12 +28,15 @@ class LinkedList:
         return val
 
     def size(self) -> int:
-        size: int = 1
+        size: int = 0
         curr = self
 
-        while not not curr.next:
-            curr = curr.next
-            size = size + 1
+        while True:
+            try:
+                curr = curr.next
+                size = size + 1
+            except AttributeError:
+                break
 
         return size
 
@@ -49,22 +53,15 @@ class LinkedList:
                 return i
 
     def insert(self, item):
-        self.tail.next = Node(item)
-        self.tail = self.tail.next
-
-    def replaceAt(self, index, item):
-        NODES = self.getNodeByIndex(index)
-        node = self.getNodeByIndex(index - 1)
-        node.value = item
-        node.next = NODES
+        NODES = self.next
+        self.next = Node(item)
+        self.next.next = NODES
 
 
 myLinkedList = LinkedList(3, 4)
 myLinkedList.insert(5)
 myLinkedList.insert(6)
 myLinkedList.insert(7)
-myLinkedList.insertAt(2, 8)
+myLinkedList.insert(8)
 
-
-myLinkedList.view()
-print(myLinkedList.getIndex(5))
+print(myLinkedList.tail.next.value)
